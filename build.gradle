@@ -8,15 +8,20 @@ version = '1.0'
 
 repositories {
     mavenCentral()
-    // This is the correct, official repository URL for Sponge files
     maven {
-        url = 'https://repo.spongepowered.org/repository/maven-public/'
+        url = 'https://spongepowered.org'
+    }
+    // Adds Mojang's asset server so the builder can see Minecraft's files
+    maven {
+        url = 'https://minecraft.net'
     }
 }
 
 dependencies {
-    // This will now successfully pull from the Sponge maven above
     implementation 'org.spongepowered:mixin:0.8.5'
+    
+    // Links the official Minecraft 1.8.9 client jar directly for compilation references
+    compileOnly 'com.mojang:minecraft:1.8.9'
 }
 
 tasks.withType(JavaCompile) {
