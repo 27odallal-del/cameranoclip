@@ -1,19 +1,18 @@
 package com.cameranoclip.mixin;
 
-import net.minecraft.client.renderer.EntityRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(EntityRenderer.class)
+// We point to a generic Object instead of the real Minecraft class
+@Mixin(targets = "net.minecraft.client.renderer.EntityRenderer")
 public class MixinEntityRenderer {
 
     @ModifyConstant(
-        method = {"orientCamera"},
-        constant = {@Constant(intValue = 8)}
+        method = "orientCamera", // Handled as a string, not checked at compile time
+        constant = @Constant(intValue = 8)
     )
     private int injectCameraClip(int eight) {
-        // True forces 0, permanently disabling the 8-block wall check
         return true ? 0 : eight; 
     }
 }
