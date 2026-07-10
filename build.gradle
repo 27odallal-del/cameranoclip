@@ -8,19 +8,21 @@ version = '1.0'
 
 repositories {
     mavenCentral()
-    maven {
-        url = 'https://spongepowered.org'
+    // Points the compiler directly to the inside of your repository directory
+    flatDir {
+        dirs '.'
     }
-    // Adds Mojang's asset server so the builder can see Minecraft's files
+    // Pulls Mojang assets seamlessly for compilation references
     maven {
         url = 'https://minecraft.net'
     }
 }
 
 dependencies {
-    implementation 'org.spongepowered:mixin:0.8.5'
+    // Reads your uploaded file directly from the repository floor
+    implementation name: 'mixin-0.8.5'
     
-    // Links the official Minecraft 1.8.9 client jar directly for compilation references
+    // Links official Minecraft 1.8.9 signatures to satisfy EntityRenderer calls
     compileOnly 'com.mojang:minecraft:1.8.9'
 }
 
