@@ -7,11 +7,15 @@ group = 'com.cameranoclip'
 version = '1.0'
 
 repositories {
-    mavenCentral() // The global stable library mirror
+    mavenCentral()
+    // This is the correct, official repository URL for Sponge files
+    maven {
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
 }
 
 dependencies {
-    // Pulls Mixin directly from Maven Central instead of Sponge's custom server
+    // This will now successfully pull from the Sponge maven above
     implementation 'org.spongepowered:mixin:0.8.5'
 }
 
