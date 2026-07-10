@@ -8,22 +8,18 @@ version = '1.0'
 
 repositories {
     mavenCentral()
-    // Points the compiler directly to the inside of your repository directory
+    // Instructs the builder to use the loose jar assets in your repository floor
     flatDir {
         dirs '.'
-    }
-    // Pulls Mojang assets seamlessly for compilation references
-    maven {
-        url = 'https://minecraft.net'
     }
 }
 
 dependencies {
-    // Reads your uploaded file directly from the repository floor
+    // Reads your uploaded Mixin asset locally
     implementation name: 'mixin-0.8.5'
     
-    // Links official Minecraft 1.8.9 signatures to satisfy EntityRenderer calls
-    compileOnly 'com.mojang:minecraft:1.8.9'
+    // Reads your uploaded Minecraft client asset locally to satisfy EntityRenderer signatures
+    compileOnly name: 'client'
 }
 
 tasks.withType(JavaCompile) {
