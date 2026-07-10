@@ -11,11 +11,8 @@ repositories {
 }
 
 dependencies {
-    // Reads your uploaded Mixin file locally
+    // Compiles using your uploaded Mixin asset sitting on the repository floor
     implementation files('mixin-0.8.5.jar')
-    
-    // Reads your uploaded deobfuscated Minecraft file locally to perfectly map human class names
-    compileOnly files('1.8.9-deobf.jar')
 }
 
 tasks.withType(JavaCompile) {
