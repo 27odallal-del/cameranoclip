@@ -7,12 +7,11 @@ group = 'com.cameranoclip'
 version = '1.0'
 
 repositories {
-    mavenCentral()
-    maven { url 'https://spongepowered.org' }
+    mavenCentral() // The global stable library mirror
 }
 
 dependencies {
-    // Basic dependency to allow your text file to recognize Mixin code structure
+    // Pulls Mixin directly from Maven Central instead of Sponge's custom server
     implementation 'org.spongepowered:mixin:0.8.5'
 }
 
@@ -28,7 +27,7 @@ shadowJar {
         attributes(
             'Manifest-Version': '1.0',
             'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
-            'MixinConfigs': 'mixins.camerano+clip.json',
+            'MixinConfigs': 'mixins.cameranoclip.json',
             'FMLCorePluginContainsFMLMod': 'true'
         )
     }
