@@ -8,18 +8,14 @@ version = '1.0'
 
 repositories {
     mavenCentral()
-    // Instructs the builder to use the loose jar assets in your repository floor
-    flatDir {
-        dirs '.'
-    }
 }
 
 dependencies {
-    // Reads your uploaded Mixin asset locally
-    implementation name: 'mixin-0.8.5'
+    // Reads your uploaded Mixin file locally as a direct file path
+    implementation files('mixin-0.8.5.jar')
     
-    // Reads your uploaded Minecraft client asset locally to satisfy EntityRenderer signatures
-    compileOnly name: 'client'
+    // Reads your renamed MultiMC client file as a direct file path, excluding it from the final jar
+    compileOnly files('client.jar')
 }
 
 tasks.withType(JavaCompile) {
