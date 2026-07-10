@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "com.cameranoclip.mixin",
+  "refmap": "mixins.cameranoclip.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "MixinEntityRenderer"
+  ]
+}
