@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+group = 'com.cameranoclip'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://spongepowered.org' }
+}
+
+dependencies {
+    // Basic dependency to allow your text file to recognize Mixin code structure
+    implementation 'org.spongepowered:mixin:0.8.5'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    manifest {
+        attributes(
+            'Manifest-Version': '1.0',
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'MixinConfigs': 'mixins.camerano+clip.json',
+            'FMLCorePluginContainsFMLMod': 'true'
+        )
+    }
+}
+
+build.dependsOn shadowJar
