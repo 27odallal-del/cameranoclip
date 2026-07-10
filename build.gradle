@@ -11,11 +11,11 @@ repositories {
 }
 
 dependencies {
-    // Reads your uploaded Mixin file locally as a direct file path
+    // Reads your uploaded Mixin file locally
     implementation files('mixin-0.8.5.jar')
     
-    // Reads your renamed MultiMC client file as a direct file path, excluding it from the final jar
-    compileOnly files('client.jar')
+    // Reads your uploaded deobfuscated Minecraft file locally to perfectly map human class names
+    compileOnly files('1.8.9-deobf.jar')
 }
 
 tasks.withType(JavaCompile) {
